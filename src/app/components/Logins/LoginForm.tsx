@@ -78,17 +78,17 @@ const LoginForm = () => {
                                                 break;
                                         }
                                     }}
-                                    setFieldValue={setFieldValue}
                                 />
                             </div>
 
                             <div className=" grid gap-4 mt-5 px-2">
                                 <label className="md:px-5 text-center md:text-center  font-bold" htmlFor="email">Email</label>
-                                <InputTextField id="email" name="email" placeholder="Enter Email Address" errors={errors} touched={touched}  />
+                                <div>
+                                <InputTextField id="email" name="email" classes="w-full xs:w-full sm:w-4/5 md:w-3/4  mx-auto block" placeholder="Enter Email Address" errors={errors} touched={touched}  />
                                 {errors.email && touched.email ? (
-                                    <div className="text-red-600 bg-amber-100 w-[80%] mx-auto py-1 text-center text-sm font-bold"> {errors.email.toString()}</div>
+                                    <div className="text-red-600  w-[75%] mt-2 mx-auto py-2 border-b-2 text-center text-sm font-bold"> {errors.email.toString()}</div>
                                 ) : null}
-
+                                </div>
                             </div>
                             <div className="grid mt-2">
                                     <label className="md:px-5  text-center md:text-center font-bold" htmlFor="password">Password</label>
