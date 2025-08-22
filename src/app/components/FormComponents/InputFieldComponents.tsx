@@ -3,28 +3,30 @@ import { Field, FormikErrors, FormikTouched, FormikValues } from "formik";
 import { Eye, EyeClosed } from "lucide-react";
 
 
-
-export const InputTextField = ({ id, name, classes='', placeholder, errors, touched }: {
-    id: string, name: string, classes:string, placeholder: string,
+//Modular Text Field
+export const InputTextField = ({ id, name, classes = '', placeholder, errors, touched }: {
+    id: string, name: string, classes: string, placeholder: string,
     errors: FormikErrors<FormikValues>, touched: FormikTouched<FormikValues>
 }) => {
     return (
-            <Field
-                className={`border-2 input  py-2 font-semibold  text-center shadow-md ${errors.email && touched.email ? 'border-red-500' : ''}`+classes}
-                id={id}
-                name={name}
-                type="text"
-                placeholder={placeholder}
-            />        
+        <Field
+            className={`border-2 input  py-2 font-semibold  text-center shadow-md ${errors.email && touched.email ? 'border-red-500' : ''} ` + classes}
+            id={id}
+            name={name}
+            type="text"
+            placeholder={placeholder}
+        />
     );
 };
 
+
 export const InputPasswordField = ({ id, name, passwordVisible, setPasswordVisible, errors, touched }: {
-        id: string, name: string,
-        passwordVisible: Boolean, 
-        setPasswordVisible: React.Dispatch<React.SetStateAction<boolean>>,
-        errors: FormikErrors<FormikValues>, touched: FormikTouched<FormikValues>
-    }) => {
+    id: string, name: string,
+    passwordVisible: Boolean,
+    setPasswordVisible: React.Dispatch<React.SetStateAction<boolean>>,
+    errors: FormikErrors<FormikValues>, touched: FormikTouched<FormikValues>
+
+}) => {
     return (
         <div className=" grid gap-4 mt-5 px-2 relative">
             <div className="flex  mx-auto">
@@ -33,7 +35,7 @@ export const InputPasswordField = ({ id, name, passwordVisible, setPasswordVisib
                     name={name}
                     type={passwordVisible ? "text" : "password"}
                 />
-                <div className=" w-[20%]">
+                <div className=" w-[20%] flex">
                     <button type="button" onClick={() => setPasswordVisible(!passwordVisible)}
                         className=" border-1 border-zinc-400 rounded-full py-2 px-2 cursor-pointer" >
                         {passwordVisible ? <Eye color="#FF0000"></Eye> : <EyeClosed color="#FF0000"></EyeClosed>}
@@ -48,9 +50,10 @@ export const InputPasswordField = ({ id, name, passwordVisible, setPasswordVisib
     );
 };
 
+
 export const InputSelectField = ({ id, name, options, onSelectChange }: {
     id: string, name: string, options: SelectOptions[],
-    onSelectChange: React.ChangeEventHandler<HTMLSelectElement>
+    onSelectChange?: React.ChangeEventHandler<HTMLSelectElement>
 }) => {
     return (
         <Field
@@ -58,14 +61,26 @@ export const InputSelectField = ({ id, name, options, onSelectChange }: {
             id={id}
             name={name}
             className="form-select border-2 cursor-pointer text-blue-800 font-bold text-center  py-2 rounded-lg shadow-lg md:w-[50%] w-[60%] md:mx-auto "
-            onChange={(e: any) => onSelectChange(e)}
+            onChange={onSelectChange || undefined}
         >
-            <option key={Math.random()*200} value="select">Select</option>
+            <option key={Math.random() * 200} value="select">Select</option>
             {
                 options.map((options) => {
-                    return <option key={Math.random()*50} value={options.value}>{options.label}</option>
+                    return <option key={Math.random() * 50} value={options.value}>{options.label}</option>
                 })
             }
         </Field>
     );
 };
+
+export const InputTextAreaField = ((
+    { id, name, classes }: { id: string, name: string, classes: string }) => {
+    <Field
+        id={id}
+        name={name}
+        className='border-b-2'
+        as='textarea'
+    >
+
+    </Field>
+})

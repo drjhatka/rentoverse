@@ -6,6 +6,7 @@ import { Formik, FormikValues, FormikTouched, Form, FormikErrors } from "formik"
 import { useEffect, useState } from "react";
 import { InputPasswordField, InputSelectField, InputTextField } from "../FormComponents/InputFieldComponents";
 import { SelectOptions } from "@/interface";
+import {motion} from 'motion/react'
 
 
 const LoginSchema = Yup.object().shape({
@@ -86,7 +87,7 @@ const LoginForm = () => {
                                 <div>
                                 <InputTextField id="email" name="email" classes="w-full xs:w-full sm:w-4/5 md:w-3/4  mx-auto block" placeholder="Enter Email Address" errors={errors} touched={touched}  />
                                 {errors.email && touched.email ? (
-                                    <div className="text-red-600  w-[75%] mt-2 mx-auto py-2 border-b-2 text-center text-sm font-bold"> {errors.email.toString()}</div>
+                                    <motion.div initial={{opacity:0, x:-100}} animate={{opacity:1, x:0}} transition={{duration:0.8}} className="text-red-600  w-[75%] mt-2 mx-auto py-2 border-b-2 text-center text-sm font-bold"> {errors.email.toString()}</motion.div>
                                 ) : null}
                                 </div>
                             </div>
