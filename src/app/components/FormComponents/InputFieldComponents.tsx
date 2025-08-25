@@ -29,13 +29,13 @@ export const InputPasswordField = ({ id, name, passwordVisible, setPasswordVisib
 }) => {
     return (
         <div className=" grid gap-4 mt-5 px-2 relative">
-            <div className="flex  mx-auto">
-                <Field className="border-2  border-r-0 mx-auto input rounded-lg  xs:w-full sm:w-[80%] sm:mx-auto md:w-[75%]  py-2 text-center shadow-md"
+            <div className="flex gap-2 sm:w-[70%] sm:mx-auto ">
+                <Field className="border-2 w-full border-r-0 input rounded-lg   py-2 text-center shadow-md"
                     id={id}
                     name={name}
                     type={passwordVisible ? "text" : "password"}
                 />
-                <div className=" w-[20%] flex">
+                <div className=" flex">
                     <button type="button" onClick={() => setPasswordVisible(!passwordVisible)}
                         className=" border-1 border-zinc-400 rounded-full py-2 px-2 cursor-pointer" >
                         {passwordVisible ? <Eye color="#FF0000"></Eye> : <EyeClosed color="#FF0000"></EyeClosed>}
