@@ -9,6 +9,7 @@ import { SelectOptions } from "@/interface";
 import {motion} from 'motion/react'
 import { Github } from "lucide-react";
 import Image from "next/image";
+import SocialButton from "../ButtonComponents/SocialButton";
 
 
 const LoginSchema = Yup.object().shape({
@@ -109,7 +110,8 @@ const LoginForm = () => {
                             </div>
                             <div className="text-center grid gap-3 mt-5">
                                 <h1 className="font-bold">Or</h1>
-                                    <button className="btn w-[70%] mx-auto sm:w-[50%] sm:mx-auto btn-accent  btn-xs sm:btn-sm md:btn-md lg:btn-lg text-blue-800 xl:btn-xl"><Image src={'icons/google.svg'} width={28} height={28} alt="google"></Image> Sign In With Google</button>
+                                    <SocialButton text="Login with Gmail" provider="google" key={Math.random()*10} ></SocialButton>
+
                                     <button className="btn w-[70%] mx-auto sm:w-[50%] sm:mx-auto btn-secondary btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl"><Github /> Sign In With Github</button>
                             </div>
                             <div className="flex font-bold border-t-1 w-[80%] rounded-lg px-2 text-red-600     gap-5 py-4 mt-3  justify-center mx-auto border-b-2">
@@ -119,6 +121,7 @@ const LoginForm = () => {
                         </Form>
                     }}
                 </Formik>
+
             </div>
         </div>
     );
